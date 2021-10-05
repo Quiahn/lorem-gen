@@ -1,4 +1,5 @@
 'use strict'
+
 window.onload = () => {
     // get form by id then add submit event listener that calls on submit function
     const form = document.getElementById('loremForm')
@@ -15,6 +16,13 @@ const onSubmit = e => {
     const num = e.target.num.value
     // copy lorem text from 0 to the number that was given
     navigator.clipboard.writeText(loremText.substr(0, num))
+
+    tippy('#loremFormSubmit', {
+        content: `You copied ${num} characters of lorem`,
+        trigger: 'click'
+    })
+
+    document.getElementById('loremFormSubmit').click()
 }
 
 // const copyText = (loremText, num) => {
